@@ -1,7 +1,7 @@
 
-# vCenter Server 8.0 IA (Build 20519528) Events Events
+# vCenter Server 8.0 Update 1 (Build 21560480) Events Events
 
-**Number of Events:** 2026
+**Number of Events:** 2061
 
 | EventId | EventType | EventDescription |
 |------------|------------|-----------
@@ -110,9 +110,18 @@
 | com.vmware.dp.events.retiresnapshot | ExtendedEvent | Retire LWD snapshot |
 | com.vmware.dp.events.retiresnapshotdone | ExtendedEvent | LWD snapshot is retired |
 | com.vmware.dp.events.retiresnapshotfailed | ExtendedEvent | Failed to retire LWD snapshot |
-| com.vmware.dp.events.snapshot | ExtendedEvent | Take LWD snapshot |
-| com.vmware.dp.events.snapshotdone | ExtendedEvent | LWD snapshot taken |
-| com.vmware.dp.events.snapshotfailed | ExtendedEvent | LWD snapshot failed |
+| com.vmware.dp.events.snapshot.applicationconsistent | ExtendedEvent | Take LWD application-consistent snapshot |
+| com.vmware.dp.events.snapshot.crashconsistent | ExtendedEvent | Take LWD crash-consistent snapshot |
+| com.vmware.dp.events.snapshot.metadataonly | ExtendedEvent | Take LWD metadata-only snapshot |
+| com.vmware.dp.events.snapshot.vssappconsistent | ExtendedEvent | Take LWD VSS application-consistent snapshot |
+| com.vmware.dp.events.snapshotdone.applicationconsistent | ExtendedEvent | LWD application-consistent snapshot taken |
+| com.vmware.dp.events.snapshotdone.crashconsistent | ExtendedEvent | LWD crash-consistent snapshot taken |
+| com.vmware.dp.events.snapshotdone.metadataonly | ExtendedEvent | LWD metadata-only snapshot taken |
+| com.vmware.dp.events.snapshotdone.vssappconsistent | ExtendedEvent | LWD VSS application-consistent snapshot taken |
+| com.vmware.dp.events.snapshotfailed.applicationconsistent | ExtendedEvent | LWD application-consistent snapshot failed |
+| com.vmware.dp.events.snapshotfailed.crashconsistent | ExtendedEvent | LWD crash-consistent snapshot failed |
+| com.vmware.dp.events.snapshotfailed.metadataonly | ExtendedEvent | LWD metadata-only snapshot failed |
+| com.vmware.dp.events.snapshotfailed.vssappconsistent | ExtendedEvent | LWD VSS application-consistent snapshot failed |
 | com.vmware.dp.events.sync | ExtendedEvent | Perform LWD snapshot sync |
 | com.vmware.dp.events.syncdone | ExtendedEvent | LWD snapshot sync is completed |
 | com.vmware.dp.events.syncfailed | ExtendedEvent | LWD snapshot sync failed |
@@ -142,8 +151,10 @@
 | com.vmware.ovfs.ExportEvent | EventEx | Cloned entity to Content Library |
 | com.vmware.ovfs.ExportFailEvent | EventEx | Failed to clone entity to Content Library |
 | com.vmware.pbm.profile.associate | EventEx | Storage policy associated |
+| com.vmware.pbm.profile.create | EventEx | Storage policy created |
 | com.vmware.pbm.profile.delete | EventEx | Storage policy deleted |
 | com.vmware.pbm.profile.dissociate | EventEx | Storage policy dissociated |
+| com.vmware.pbm.profile.update | EventEx | Storage policy updated |
 | com.vmware.pbm.profile.updateName | EventEx | Storage policy name updated |
 | com.vmware.rbd.activateRuleSet | EventEx |  |
 | com.vmware.rbd.fdmPackageMissing | EventEx |  |
@@ -195,9 +206,15 @@
 | com.vmware.trustmanagement.WS1SyncTokenExpiry | EventEx | Identity Provider Users and Groups token is about to expire |
 | com.vmware.vc.A8sCluster.CreateStageFailedEvent | EventEx | Reports that a stage from autonomous cluster creation has failed |
 | com.vmware.vc.A8sCluster.CreateStageSuccessEvent | EventEx | Reports that a stage from autonomous cluster creation has completed successfully |
+| com.vmware.vc.A8sCluster.HealthDegradedEvent | EventEx | Autonomous cluster health is degraded. |
+| com.vmware.vc.A8sCluster.HealthHealthyEvent | ExtendedEvent | Autonomous cluster is healthy. |
+| com.vmware.vc.A8sCluster.HealthUnhealthyEvent | EventEx | Autonomous cluster is unhealthy. |
 | com.vmware.vc.authorization.NoPermission | EventEx | Privilege check failed |
-| com.vmware.vc.certificatemanagement.NSXNotifyFailureEvent | ExtendedEvent | Failed to notify NSX about vCenter Server TLS certificate replacement. |
+| com.vmware.vc.certificatemanagement.TrustedRootsImportedEvent | ExtendedEvent | TRUSTED ROOT certificates imported successfully. |
+| com.vmware.vc.certificatemanagement.TrustedRootsImportedWithWarningsEvent | ExtendedEvent | TRUSTED ROOT certificates imported successfully, but with warnings. |
 | com.vmware.vc.certificatemanagement.VcCertificateReplacedEvent | ExtendedEvent | vCenter Server TLS certificate replaced successfully. |
+| com.vmware.vc.certificatemanagement.VcCertificateReplacedWithWarningsEvent | ExtendedEvent | vCenter Server TLS certificate replaced successfully, but there are warnings detected. |
+| com.vmware.vc.certificatemanagement.VcServerCertificateUpdateFailureEvent | EventEx | Failed to update the vCenter server certificate. |
 | com.vmware.vc.certmgr.HostCaCertsAndCrlsUpdatedEvent | EventEx | CA Certificates were updated on host |
 | com.vmware.vc.certmgr.HostCertExpirationImminentEvent | EventEx | Host Certificate expiration is imminent |
 | com.vmware.vc.certmgr.HostCertExpiringEvent | EventEx | Host Certificate is nearing expiration |
@@ -217,6 +234,7 @@
 | com.vmware.vc.datastore.UpdateVmFilesFailedEvent | EventEx | Failed to update VM files |
 | com.vmware.vc.datastore.UpdatingVmFilesEvent | EventEx | Updating VM Files |
 | com.vmware.vc.dvs.LacpConfigInconsistentEvent | ExtendedEvent | Link Aggregation Control Protocol configuration is inconsistent |
+| com.vmware.vc.EventIdOverflow | ExtendedEvent | Event sequence ID reached its max value and was reset. |
 | com.vmware.vc.FailedToApplyPermissionsEvent | ExtendedEvent |  |
 | com.vmware.vc.ft.VmAffectedByDasDisabledEvent | ExtendedEvent | Fault Tolerance VM restart disabled |
 | com.vmware.vc.guestOperations.GuestOperation | EventEx | Guest operation |
@@ -320,6 +338,8 @@
 | com.vmware.vc.host.StatelessHPApplyEarlyBootFailed | EventEx | Host profile apply failed during stateless boot. Host is in Maintenance Mode. Failed Profiles: {failedProfiles} |
 | com.vmware.vc.host.StatelessHPApplyFailed | EventEx | Host profile apply failed during stateless boot. Host is in Maintenance Mode. Failed Profiles: {failedProfiles}. {error} |
 | com.vmware.vc.host.StatelessHPApplyPostBootFailed | EventEx | Host profile apply failed during stateless boot. Host is in Maintenance Mode. {error} |
+| com.vmware.vc.host.TieringMemoryActiveDRAMGreen | ExtendedEvent | Active DRAM usage of the memory tiered host is normal |
+| com.vmware.vc.host.TieringMemoryActiveDRAMYellow | ExtendedEvent | Active DRAM usage of the memory tiered host is high |
 | com.vmware.vc.host.TPMAttestationFailedEvent | EventEx | Host TPM attestation failed |
 | com.vmware.vc.host.TpmEndorsementKeyMismatch | ExtendedEvent | New TPM host endorsement key doesn't match the one in the DB |
 | com.vmware.vc.host.vFlash.defaultModuleChangedEvent | EventEx | Default virtual flash module is changed to {vFlashModule} on the host |
@@ -344,9 +364,9 @@
 | com.vmware.vc.iofilter.FilterUninstallationSuccessEvent | ExtendedEvent | vSphere APIs for I/O Filters (VAIO) uninstallation of filters is successful |
 | com.vmware.vc.iofilter.FilterUpgradeFailedEvent | ExtendedEvent | vSphere APIs for I/O Filters (VAIO) upgrade of filters has failed |
 | com.vmware.vc.iofilter.FilterUpgradeSuccessEvent | ExtendedEvent | vSphere APIs for I/O Filters (VAIO) upgrade of filters is successful |
-| com.vmware.vc.iofilter.HostVendorProviderRegistrationFailedEvent | EventEx | vSphere APIs for I/O Filters (VAIO) host vendor provider registration has failed. Reason : {fault.msg}. |
+| com.vmware.vc.iofilter.HostVendorProviderRegistrationFailedEvent | EventEx | vSphere APIs for I/O Filters (VAIO) host vendor provider registration has failed. |
 | com.vmware.vc.iofilter.HostVendorProviderRegistrationSuccessEvent | ExtendedEvent | vSphere APIs for I/O Filters (VAIO) host vendor provider has been successfully registered |
-| com.vmware.vc.iofilter.HostVendorProviderUnregistrationFailedEvent | EventEx | Failed to unregister vSphere APIs for I/O Filters (VAIO) host vendor provider. Reason : {fault.msg}. |
+| com.vmware.vc.iofilter.HostVendorProviderUnregistrationFailedEvent | EventEx | Failed to unregister vSphere APIs for I/O Filters (VAIO) host vendor provider. |
 | com.vmware.vc.iofilter.HostVendorProviderUnregistrationSuccessEvent | ExtendedEvent | vSphere APIs for I/O Filters (VAIO) host vendor provider has been successfully unregistered |
 | com.vmware.vc.kms.crypto.AllBackedUp | ExtendedEvent | Key providers are backed up. |
 | com.vmware.vc.kms.crypto.KeyGenerateFail | EventEx | Key creation failed on key provider. |
@@ -454,10 +474,6 @@
 | com.vmware.vc.vecs.KMSClientCertExpirationEvent | EventEx | KMS Client Certificate will expire soon. |
 | com.vmware.vc.vecs.KMSServerCertExpirationEvent | EventEx | KMS Server Certificate will expire soon. |
 | com.vmware.vc.vflash.SsdConfigurationFailedEvent | EventEx | Operation on the SSD device failed |
-| com.vmware.vc.vm.bipe.cryptoResumeError | EventEx | Unexpected error happened when processing live encryption on virtual machine |
-| com.vmware.vc.vm.bipe.invalidCrypto | EventEx | Live encryption failed due to incorrect runtime information |
-| com.vmware.vc.vm.bipe.licensePrivCheckError | EventEx | Live encryption failed due to insufficient license or privilege |
-| com.vmware.vc.vm.bipe.sendKeysError | EventEx | Live encryption failed because syncing keys to host failed |
 | com.vmware.vc.vm.crypto.DiskchainUsingMixedKeys | EventEx | The disk device is encrypted with mixed keys. |
 | com.vmware.vc.vm.crypto.NoDiskSpace | EventEx | Cryptographic operation failed due to insufficient disk space on datastore |
 | com.vmware.vc.vm.crypto.RekeyFail | EventEx |  |
@@ -478,6 +494,8 @@
 | com.vmware.vc.vm.SrcVmMigratedEvent | EventEx | Virtual machine migrated successfully |
 | com.vmware.vc.vm.SrcVmMigrateFailedEvent | EventEx | Virtual machine migration failed |
 | com.vmware.vc.vm.TemplateConvertedToVmEvent | ExtendedEvent | Template converted to VM |
+| com.vmware.vc.vm.TieringPMemBandwidthGreen | ExtendedEvent | Virtual machine PMem bandwidth usage is normal |
+| com.vmware.vc.vm.TieringPMemBandwidthYellow | ExtendedEvent | Virtual machine PMem bandwidth usage is high |
 | com.vmware.vc.vm.Uptv2Active | ExtendedEvent | The network adapter of VM successfully activate UPT |
 | com.vmware.vc.vm.Uptv2Inactive | EventEx | The network adapter of VM fails to activate UPT |
 | com.vmware.vc.vm.VmAdapterResvNotSatisfiedEvent | EventEx | Virtual NIC reservation is not satisfied |
@@ -488,6 +506,7 @@
 | com.vmware.vc.vm.VmHotMigratingWithEncryptionEvent | EventEx | Hot migrating virtual machine with encryption |
 | com.vmware.vc.vm.VmMigratingWithEncryptionEvent | EventEx |  |
 | com.vmware.vc.vm.VmPromoteDisksFailedEvent | ExtendedEvent | Failed to promote disks of virtual machine |
+| com.vmware.vc.vm.VmReconfigureFailedonSharedDiskEvent | ExtendedEvent | Reconfigure VM failed for {VM} on shared disk |
 | com.vmware.vc.vm.VmRegisterFailedEvent | ExtendedEvent | Virtual machine register failed |
 | com.vmware.vc.vm.VmStateFailedToRevertToSnapshot | EventEx | Failed to revert the virtual machine state to a snapshot |
 | com.vmware.vc.vm.VmStateRevertedToSnapshot | EventEx | The virtual machine state has been reverted to a snapshot |
@@ -521,9 +540,9 @@
 | com.vmware.vc.vsan.HostCommunicationErrorEvent | EventEx | Host cannot communicate with one or more other nodes in the vSAN enabled cluster |
 | com.vmware.vc.vsan.HostNotInClusterEvent | ExtendedEvent | Host with vSAN service enabled is not in the vCenter cluster |
 | com.vmware.vc.vsan.HostNotInVsanClusterEvent | ExtendedEvent | Host is in a vSAN cluster but does not have vSAN service enabled because of insufficient memory or other errors. Please check recent tasks for more details |
-| com.vmware.vc.vsan.HostVendorProviderDeregistrationFailedEvent | EventEx | vSAN host vendor provider registration has failed. Reason : {fault.msg}. |
+| com.vmware.vc.vsan.HostVendorProviderDeregistrationFailedEvent | EventEx | vSAN host vendor provider registration has failed. |
 | com.vmware.vc.vsan.HostVendorProviderDeregistrationSuccessEvent | ExtendedEvent | vSAN host vendor provider has been successfully unregistered |
-| com.vmware.vc.vsan.HostVendorProviderRegistrationFailedEvent | EventEx | vSAN host vendor provider registration failed. Reason : {fault.msg}. |
+| com.vmware.vc.vsan.HostVendorProviderRegistrationFailedEvent | EventEx | vSAN host vendor provider registration failed. |
 | com.vmware.vc.vsan.HostVendorProviderRegistrationSuccessEvent | ExtendedEvent | vSAN host vendor provider registration succeeded |
 | com.vmware.vc.vsan.NetworkMisConfiguredEvent | ExtendedEvent | vSAN network is not configured |
 | com.vmware.vc.vsan.RogueHostFoundEvent | EventEx | Found another host participating in the vSAN service which is not a member of this host's vCenter cluster |
@@ -645,6 +664,7 @@
 | com.vmware.vcIntegrity.HostUpgradePrecheckTestFailIncompatiblePasswords | ExtendedEvent |  |
 | com.vmware.vcIntegrity.HostUpgradePrecheckTestFailIncompatibleSphereletVersion | ExtendedEvent |  |
 | com.vmware.vcIntegrity.HostUpgradePrecheckTestFailIncompatibleWithDvsCP | ExtendedEvent |  |
+| com.vmware.vcIntegrity.HostUpgradePrecheckTestFailInsufficientEntropyCache | ExtendedEvent |  |
 | com.vmware.vcIntegrity.HostUpgradePrecheckTestFailInsufficientMemory | ExtendedEvent |  |
 | com.vmware.vcIntegrity.HostUpgradePrecheckTestFailInsufficientSpaceForConfig | ExtendedEvent |  |
 | com.vmware.vcIntegrity.HostUpgradePrecheckTestFailLockerSpaceAvail | ExtendedEvent |  |
@@ -798,6 +818,9 @@
 | com.vmware.vcIntegrity.VmPowerRestoreFailedEvent | ExtendedEvent |  |
 | com.vmware.vcIntegrity.VMToolsAutoUpgradeUnsupported | ExtendedEvent |  |
 | com.vmware.vcIntegrity.VMToolsNotRunning | ExtendedEvent |  |
+| com.vmware.vcls.cluster.DeploymentModeSystemManagedEvent | ExtendedEvent | vSphere Cluster Services mode set to system managed on cluster. |
+| com.vmware.vcls.cluster.DrsEnabledDeployModeAbsentEvent | ExtendedEvent | vSphere Cluster Services mode set to absent on DRS-enabled cluster. |
+| com.vmware.vcls.cluster.HaEnabledDrsDisabledDeploymentModeAbsentEvent | ExtendedEvent | vSphere Cluster Services mode set to absent on DRS-disabled cluster. |
 | com.vmware.vim.dpu.state.changed | EventEx | The management state for a Data Processing Unit has changed. |
 | com.vmware.vim.eam.agency.create | EventEx | Agency created |
 | com.vmware.vim.eam.agency.destroyed | EventEx | Agency destroyed |
@@ -883,11 +906,7 @@
 | com.vmware.vim.eam.logout | EventEx | User logged out of vSphere ESX Agent Manager |
 | com.vmware.vim.eam.unauthorized.access | EventEx | Unauthorized access in vSphere ESX Agent Manager |
 | com.vmware.vim.utf8filter.badvalue | ExtendedEvent | Invalid UTF-8 string encountered. |
-| com.vmware.vim.vm.CryptoPauseFailed | ExtendedEvent | Virtual machine crypto pause operation failed |
-| com.vmware.vim.vm.CryptoResumeFailed | EventEx | Virtual machine cryptographic operation failed |
-| com.vmware.vim.vm.DiskCryptoResumeFailed | EventEx | Virtual machine cryptographic operation failed |
 | com.vmware.vim.vm.DisksNotLoaded | ExtendedEvent | Some of the disks of the virtual machine failed to load. The information present for them in the virtual machine configuration may be incomplete |
-| com.vmware.vim.vm.LiveEncryptionPaused | ExtendedEvent | Live encryption is paused by system |
 | com.vmware.vim.vm.reboot.powerOff | ExtendedEvent | Virtual machine reboot converted to power off because the rebootPowerOff option is enabled |
 | com.vmware.vim.vsm.dependency.bind.vApp | EventEx | vService dependency bound |
 | com.vmware.vim.vsm.dependency.bind.vm | EventEx | vService dependency bound |
@@ -944,6 +963,7 @@
 | com.vmware.vsan.diskconversion.events.statuscheck | ExtendedEvent | Check cluster status for disk format conversion. |
 | com.vmware.vsan.diskconversion.events.syncingtimeout | ExtendedEvent |  |
 | com.vmware.vsan.diskconversion.events.updatesetting | ExtendedEvent | Update the vSAN cluster system settings. |
+| com.vmware.vsan.diskconversion.events.whatifupgradefailed | ExtendedEvent | Disk format conversion failed in what if upgrade. |
 | com.vmware.vsan.diskmgmt.events.tagcapacityflash | EventEx | Mark ssd(s) as capacity flash. |
 | com.vmware.vsan.diskmgmt.events.taghdd | EventEx | Mark ssd as hdd. |
 | com.vmware.vsan.diskmgmt.events.taglocal | EventEx | Mark remote disk as local disk. |
@@ -1064,10 +1084,14 @@
 | esx.audit.dcui.login.passwd.changed | EventEx | DCUI login password changed. |
 | esx.audit.dcui.network.factoryrestore | ExtendedEvent | Factory network settings restored through DCUI. |
 | esx.audit.dcui.network.restart | EventEx | Restarting network through DCUI. |
+| esx.audit.entropy.available.low | ExtendedEvent | Host is configured with external entropy source. Host is running low on entropy bits in its memory cache. Please refer to KB 89074 for more details. |
+| esx.audit.entropy.external.source.disconnected | ExtendedEvent | Host is configured with external entropy source. The external entropy source is disconnected. Please refer to KB 89074 for more details. |
 | esx.audit.esxcli.host.poweroff.reason | EventEx | Powering off host through esxcli |
 | esx.audit.esxcli.host.reboot.reason | EventEx | Rebooting host through esxcli |
 | esx.audit.esxcli.host.restart.reason | EventEx | Rebooting host through esxcli |
 | esx.audit.esximage.hostacceptance.changed | EventEx | Host acceptance level changed |
+| esx.audit.esximage.install.nobypasssigcheck | ExtendedEvent | UEFI Secure Boot enabled: Cannot skip signature checks. |
+| esx.audit.esximage.install.nosigcheck | ExtendedEvent | Attempting to install an image profile bypassing signing and acceptance level verification. |
 | esx.audit.esximage.install.novalidation | ExtendedEvent | Attempting to install an image profile with validation disabled. |
 | esx.audit.esximage.install.securityalert | EventEx | SECURITY ALERT: Installing image profile. |
 | esx.audit.esximage.profile.install.successful | EventEx | Successfully installed image profile. |
@@ -1160,6 +1184,7 @@
 | esx.audit.uw.security.execInstalledOnly.violation | EventEx | Execution of non-installed file prevented. |
 | esx.audit.uw.security.execInstalledOnly.warning | EventEx | Execution of non-installed file detected. |
 | esx.audit.uw.security.User.ExecInstalledOnly.disabled | ExtendedEvent | ExecInstalledOnly has been disabled. This allows the execution of non-installed binaries on the host. Unknown content can cause malware attacks similar to Ransomware. |
+| esx.audit.uw.security.User.ExecInstalledOnly.enabled | ExtendedEvent | ExecInstalledOnly has been enabled. This prevents the execution of non-installed binaries on the host. |
 | esx.audit.vmfs.lvm.device.discovered | ExtendedEvent | LVM device discovered. |
 | esx.audit.vmfs.sesparse.bloomfilter.disabled | EventEx | Read IO performance maybe impacted for disk |
 | esx.audit.vmfs.volume.mounted | EventEx | File system mounted. |
@@ -1242,11 +1267,16 @@
 | esx.problem.cs.dfs.cleanup.error | ExtendedEvent | Error cleaning up Datafile store. |
 | esx.problem.cs.dfs.restore.error | ExtendedEvent | DataFile store cannot be restored. |
 | esx.problem.cs.schema.file.error | EventEx | Error processing schema file. |
+| esx.problem.cs.schema.metadata.error | EventEx | Invalid metadata in schema file. |
+| esx.problem.cs.schema.validation.error | EventEx | VibId validation failed for schema file. |
 | esx.problem.cs.upgrade.config.error | EventEx | Error in upgrading config. |
 | esx.problem.dhclient.lease.none | EventEx | Unable to obtain a DHCP lease. |
 | esx.problem.dhclient.lease.offered.noexpiry | EventEx | No expiry time on offered DHCP lease. |
 | esx.problem.dpu.maintenance.sync.failed | EventEx | The maintenance mode state for some Data Processing Units may be out of sync with the host. |
 | esx.problem.driver.abnormal | EventEx | Some drivers need special notice. |
+| esx.problem.entropy.config.error | EventEx | Host is configured with external entropy source. Entropy daemon has become non functional because of cache size change. Please refer to KB 89074 for more details. |
+| esx.problem.entropy.empty | ExtendedEvent | Host is configured with external entropy source. The entropy available in the memory cache and storage cache is exhausted. Please refer to KB 89074 for more details. |
+| esx.problem.entropy.inmemory.empty | ExtendedEvent | Host is configured with external entropy source. The entropy available in the memory cache is exhausted. Please refer to KB 89074 for more details. |
 | esx.problem.esximage.install.error | EventEx | Could not install image profile. |
 | esx.problem.esximage.install.invalidhardware | EventEx | Host doesn't meet image profile hardware requirements. |
 | esx.problem.esximage.install.stage.error | EventEx | Could not stage image profile. |
@@ -1432,6 +1462,7 @@
 | esx.problem.syslog.nonpersistent | ExtendedEvent | System logs are stored on non-persistent storage. |
 | esx.problem.test.test0 | ExtendedEvent | Test with no arguments |
 | esx.problem.test.test2 | EventEx | Test with both int and string arguments |
+| esx.problem.unsupported.tls.protocols | ExtendedEvent | Upgrade detected unsupported TLS protocols, resetting option /UserVars/ESXiVPsDisabledProtocols to default. From vSphere 8.0 onwards, protocols prior to tlsv1.2 are no longer supported and must remain disabled. |
 | esx.problem.vfat.filesystem.full.other | EventEx | A VFAT filesystem is full. |
 | esx.problem.vfat.filesystem.full.scratch | EventEx | A VFAT filesystem, being used as the host's scratch partition, is full. |
 | esx.problem.visorfs.failure | ExtendedEvent | An operation on the root filesystem has failed. |
@@ -1551,6 +1582,7 @@
 | hbr.primary.InvalidVmReplicationConfigurationEvent | EventEx | Virtual machine replication configuration is invalid. |
 | hbr.primary.NoConnectionToHbrServerEvent | EventEx | No connection to VR Server. |
 | hbr.primary.NoProgressWithHbrServerEvent | EventEx | VR Server error: {reason.@enum.hbr.primary.ReasonForNoServerProgress} |
+| hbr.primary.PrepareDeltaTimeExceedsRpoEvent | ExtendedEvent | Prepare Delta Time exceeds configured RPO. |
 | hbr.primary.QuiesceNotSupported | ExtendedEvent | Quiescing is not supported for this virtual machine. |
 | hbr.primary.RpoOkForServerEvent | ExtendedEvent | VR Server is compatible with the configured RPO. |
 | hbr.primary.RpoTooLowForServerEvent | ExtendedEvent | VR Server does not support the configured RPO. |
@@ -1889,12 +1921,12 @@
 | vsan.health.test.cloudhealth.hpesasssd.event | EventEx | HPE SAS Solid State Drive |
 | vsan.health.test.cloudhealth.largescalecluster.event | EventEx | vSAN configuration check for large scale cluster |
 | vsan.health.test.cloudhealth.lilacdeltacomponenttest.event | EventEx | vSAN critical alert regarding a potential data inconsistency |
-| vsan.health.test.cloudhealth.lilyadvparametercheck.event | EventEx | vSAN Critical Alert - vSAN Advanced Configuration Check |
 | vsan.health.test.cloudhealth.lilypatchalert.event | EventEx | vSAN Critical Alert - Patch available for critical vSAN issue |
 | vsan.health.test.cloudhealth.mixedmode.event | EventEx | Controller with pass-through and RAID disks |
 | vsan.health.test.cloudhealth.mixedmodeh730.event | EventEx | vSAN and VMFS datastores on a Dell H730 controller with the lsi_mr3 driver |
 | vsan.health.test.cloudhealth.patchalert.event | EventEx | vSAN Hosts with new patch available |
 | vsan.health.test.cloudhealth.pnicconsistent.event | EventEx | Physical network adapter speed consistency |
+| vsan.health.test.cloudhealth.policyupdate.event | EventEx | VM storage policy is not-recommended |
 | vsan.health.test.cloudhealth.rdmanodesalert.event | EventEx | Maximum host number in vSAN over RDMA |
 | vsan.health.test.cloudhealth.scratchconfig.event | EventEx | ESXi system logs stored outside vSAN datastore |
 | vsan.health.test.cloudhealth.smalldiskstest.event | EventEx | vSAN max component size |
@@ -1902,7 +1934,6 @@
 | vsan.health.test.cloudhealth.unmaptest.event | EventEx | Fix is available for a critical vSAN software defect with Guest Trim/Unmap configuration enabled |
 | vsan.health.test.cloudhealth.v1diskcheck.event | EventEx | vSAN v1 disk in use |
 | vsan.health.test.cloudhealth.vcuptodate.event | EventEx | vCenter Server up to date |
-| vsan.health.test.cloudhealth.vendortoolpresence.event | EventEx | Controller utility is installed on host |
 | vsan.health.test.cloudhealth.vmns.event | EventEx | Multiple VMs share the same vSAN home namespace |
 | vsan.health.test.cloudhealth.vsanenablesupportinsight.event | EventEx | vSAN Support Insight |
 | vsan.health.test.cloudhealth.vsanhpefwtest.event | EventEx | HPE NVMe Solid State Drives - critical firmware upgrade required |
@@ -1918,6 +1949,7 @@
 | vsan.health.test.cluster.extendedconfig.event | EventEx | vSAN extended configuration in sync |
 | vsan.health.test.cluster.hcldiskclaimcheck.event | EventEx | vSAN Managed disk claim |
 | vsan.health.test.cluster.mmdecominsync.event | EventEx | Check host maintenance mode is in sync with vSAN node decommission state. |
+| vsan.health.test.cluster.optimaldsdefaultpolicy.event | EventEx | vSAN optimal datastore default policy configuration |
 | vsan.health.test.cluster.rdmanodes.event | EventEx | vSAN with RDMA supports up to 32 hosts. |
 | vsan.health.test.cluster.resynclimit.event | EventEx | Resync operations throttling |
 | vsan.health.test.cluster.timedrift.event | EventEx | Checks the vSAN Cluster time sync status among hosts and VC |
@@ -1965,6 +1997,7 @@
 | vsan.health.test.hcl.pniclinkspeed.event | EventEx | Network Interface Cards (NICs) used in vSAN hosts must meet certain requirements. These NIC requirements assume that the packet loss is not more than 0.0001% in the hyper-converged environments. It's recommended to use NIC which link speed can meet the minimum requirement. Otherwise, there can be a drastic impact on the vSAN performance. |
 | vsan.health.test.hcl.vsanhpefwtest.event | EventEx | HPE NVMe Solid State Drives - critical firmware upgrade required |
 | vsan.health.test.iscsi.iscsihomeobjectstatustest.event | EventEx | Home object |
+| vsan.health.test.iscsi.iscsilunruntimetest.event | EventEx | LUN runtime health |
 | vsan.health.test.iscsi.iscsiservicenetworktest.event | EventEx | Network configuration |
 | vsan.health.test.iscsi.iscsiservicerunningtest.event | EventEx | Service runtime status |
 | vsan.health.test.limits.diskspace.event | EventEx | Checks the vSAN cluster storage space utilization |
@@ -1990,6 +2023,7 @@
 | vsan.health.test.network.vmotionpinglarge.event | EventEx | Performs a large packet size ping test from all hosts to all other hosts for vMotion |
 | vsan.health.test.network.vmotionpingsmall.event | EventEx | Performs a small packet size ping test from all hosts to all other hosts for vMotion |
 | vsan.health.test.network.vsanvmknic.event | EventEx | Checks if all the hosts in the vSAN cluster have a configured vmknic with vSAN traffic enabled. |
+| vsan.health.test.network.xvcconnectivity.event | EventEx | Check all remote vCenter network connectivity. |
 | vsan.health.test.overallsummary.event | EventEx | vSAN overall health status |
 | vsan.health.test.perfsvc.collection.event | EventEx | vSAN Performance Service data collection |
 | vsan.health.test.perfsvc.diagmode.event | EventEx | vSAN Performance Service network diagnostic mode status |
@@ -2030,5 +2064,6 @@
 | vsan.health.test.vum.releasecataloguptodate.event | EventEx | vSAN release catalog up-to-date |
 | vsan.health.test.vum.vumconfig.event | EventEx | Check configuration issues for vSAN Build Recommendation Engine |
 | vsan.health.test.vum.vumrecommendation.event | EventEx | ESXi build recommended by vSAN Build Recommendation Engine |
+| vsan.health.test.zdom.leak | EventEx | This object has the risk of PSOD issue due to improper DOM object flag leak |
 | WarningUpgradeEvent | Standard | Warning upgrade |
 
